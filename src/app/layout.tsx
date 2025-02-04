@@ -3,7 +3,13 @@ import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
+import { AppSidebar } from "@/components/layout/sidebar/app-sidebar";
+import { ThemeProvider } from "@/components/provider/theme-provider";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { auth } from "@/server/auth";
 import { TRPCReactProvider } from "@/trpc/react";
+import { api } from "@/trpc/server";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -11,13 +17,33 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const session = await auth();
+
+  if (session?.user) {
+    void api.post.getAll.prefetch();
+  }
+
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <ThemeProvider
+          enableSystem
+          disableTransitionOnChange
+          attribute={`class`}
+          defaultTheme="system"
+        >
+          <SessionProvider>
+            <TRPCReactProvider>
+              <SidebarProvider>
+                <AppSidebar />
+                <SidebarInset>{children}</SidebarInset>
+              </SidebarProvider>
+            </TRPCReactProvider>
+          </SessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

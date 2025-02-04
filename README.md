@@ -58,7 +58,6 @@ A powerful and feature-rich Todo application built with the **T3 Stack** (Next.j
 
 ```bash
 📦 todo-app
- ┣ 📂 prisma      # Prisma models & migrations
  ┣ 📂 src
  ┃ ┣ 📂 pages         # Next.js pages
  ┃ ┣ 📂 components    # UI components
