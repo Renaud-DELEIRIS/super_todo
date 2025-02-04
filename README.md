@@ -1,29 +1,119 @@
-# Create T3 App
+# 📝 Todo App
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A powerful and feature-rich Todo application built with the **T3 Stack** (Next.js, tRPC, Prisma, Tailwind, TypeScript) featuring authentication, board management, custom states, real-time updates, and more!
 
-## What's next? How do I make an app with this?
+## 🚀 Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- 🔐 **Authentication**: OAuth login using NextAuth.js (Google, GitHub, etc.)
+- 🗂 **Multiple Boards**: Create and manage multiple Todo boards
+- 📌 **Custom States**: Define unique states per board
+- 🔄 **State Transitions**: Trigger events when moving todos between states
+- 🏗 **Role-Based Access**: Invite users with different permissions (owner, editor, viewer)
+- 🔴 **Live Updates**: WebSocket-based real-time updates
+- 🎨 **Theming**: Dark/Light mode support with `next-themes`
+- ✅ **E2E Testing**: Fully tested using Playwright or Cypress
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+---
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## 🛠 Tech Stack
 
-## Learn More
+- **Frontend**: [Next.js](https://nextjs.org/), [tRPC](https://trpc.io/), [TailwindCSS](https://tailwindcss.com/)
+- **Backend**: [Prisma](https://www.prisma.io/), [NextAuth.js](https://next-auth.js.org/)
+- **UI Components**: [ShadCN](https://ui.shadcn.com/), [Framer Motion](https://www.framer.com/motion/)
+- **Database**: PostgreSQL (via Prisma ORM)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+---
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## 📌 Roadmap
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Phase 1: Project Setup ✅
 
-## How do I deploy this?
+- [x] Initialize Next.js with TypeScript
+- [x] Setup Prisma and database models
+- [x] Configure NextAuth.js for OAuth authentication
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### Phase 2: Core Features 🚧
+
+- [ ] Implement CRUD operations for Boards
+- [ ] Allow custom states per Board
+- [ ] Create Todos and manage their state transitions
+- [ ] Implement drag-and-drop for task organization
+
+### Phase 3: Advanced Features 🔥
+
+- [ ] Add WebSocket-based real-time updates (tRPC subscriptions)
+- [ ] Implement user permissions & role-based access control
+- [ ] Add event triggers on state transitions (e.g., webhooks, notifications)
+- [ ] UI improvements with Framer Motion animations
+
+### Phase 4: Optimization & Deployment 🎯
+
+- [ ] Write E2E tests with Cypress or Playwright
+- [ ] Add Dark/Light mode support
+- [ ] Deploy to Vercel with CI/CD pipeline
+
+---
+
+## 📂 Project Structure
+
+```bash
+📦 todo-app
+ ┣ 📂 prisma      # Prisma models & migrations
+ ┣ 📂 src
+ ┃ ┣ 📂 pages         # Next.js pages
+ ┃ ┣ 📂 components    # UI components
+ ┃ ┣ 📂 server        # tRPC API routes
+ ┃ ┣ 📂 styles        # Tailwind styles
+ ┃ ┗ 📂 lib         # Helpers & utilities
+ ┣ 📜 .env            # Environment variables
+ ┣ 📜 prisma/schema.prisma  # Prisma schema
+ ┣ 📜 package.json    # Dependencies & scripts
+ ┗ 📜 README.md       # Project documentation
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/todo-app.git
+cd todo-app
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+yarn install  # or npm install
+```
+
+### 3️⃣ Set Up Environment Variables
+
+Create a `.env` file and add the required variables:
+
+```env
+DATABASE_URL=your_database_url
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret_key
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+```
+
+### 4️⃣ Run the Application
+
+```bash
+yarn dev  # Start development server
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
